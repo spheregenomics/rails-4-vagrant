@@ -1,0 +1,14 @@
+-- create the app user that will have access to the app's database
+CREATE USER <%= ENV['APP_DB_USER'] %> WITH ENCRYPTED PASSWORD '<%= ENV['APP_DB_PASS'] %>';
+
+-- we need to create the database so we can reference it in the next statement
+CREATE DATABASE <%= ENV['APP_DB_NAME'] %> WITH OWNER <%= ENV['APP_DB_USER'] %>;
+
+-- give all privileges
+GRANT ALL PRIVILEGES ON DATABASE <%= ENV['APP_DB_NAME'] %> TO <%= ENV['APP_DB_USER'] %>;
+
+-- including this one so we can rake db:drop and such
+ALTER USER <%= ENV['APP_DB_USER'] %> WITH CREATEDB;
+
+-- don't need this anymore; let Rails handle DB creation
+DROP DATABASE <%= ENV['APP_DB_NAME'] %>;

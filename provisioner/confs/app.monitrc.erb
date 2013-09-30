@@ -1,0 +1,13 @@
+set daemon 30
+
+set httpd port 2812 and
+  use address localhost
+  allow localhost
+
+check process nginx with pidfile <%= ENV['APP_INSTALL_DIR'] %>/tmp/nginx.pid
+  start program = "/usr/sbin/nginx -c /etc/nginx/nginx.conf"
+  stop program  = "/usr/sbin/nginx -s stop"
+
+check process unicorn with pidfile <%= ENV['APP_INSTALL_DIR'] %>/tmp/unicorn.pid
+  start program = "/usr/local/bin/unicorn -c /etc/unicorn/unicorn.rb -E <%= ENV['RAILS_ENV'] %>"
+  stop program  = "/bin/bash -c 'kill -QUIT `cat <%= ENV['APP_INSTALL_DIR'] %>/tmp/unicorn.pid`'"

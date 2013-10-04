@@ -1,5 +1,0 @@
-.env
-*.repl
-Vagrantfile
-.vagrant
-*.sublime-*

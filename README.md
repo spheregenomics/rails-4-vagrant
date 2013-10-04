@@ -1,11 +1,7 @@
-Rails 4 on Unicorns & Nginx for Vagrant
+Rails 4 on Ruby 2.0.0 for Vagrant
 =======================================
 
-This setup gets you a Rails 4 production stack running in a development environment.
-Great if you run Unicorn + Nginx in production and are looking to [keep your dev and
-production environments similar][4].
-
-Also works great if you just want to get started making your Rails 4 application.
+This Vagrant setup makes it fast & easy for you to get started making your Rails 4 application.
 
 
 Usage
@@ -14,10 +10,12 @@ Usage
     $ git clone git@github.com:santos-bt/rails-4-vagrant.git
     $ cd rails-4-vagrant
     $ vagrant up
+    $ vagrant ssh
+    $ cd /vagrant/rails-4-app
+    $ rails s
 
 You can now view your application in [http://localhost:8300/](http://localhost:8300/).  
 The source code for your application is in the `rails-4-app` folder; you can edit it there.  
-To restart the application run `sudo monit restart unicorn` inside the Virtual Machine.
 
 
 Requires
@@ -30,14 +28,27 @@ Requires
 Notes
 -----
 
-This setup uses the [Rails 4, Nginx & Unicorn Installation Script for Ubuntu][3].
-Check the script's GitHub page for more information about the stack and configuration options.
+This setup is based on the [Rails 4, Nginx & Unicorn Installation Script for Ubuntu][3] only it
+doesn't install Nginx and Unicorn. What it actually does is:
+
+* Install Ruby 2.0.0
+* Install Rails 4
+* Install Node.js (for the Javascript runtime)
+* Install PostgreSQL
+* Convert the default database template to UTF8
+* Create development and test database users
+* Install the application's gems
+* Initialize databases
 
 The pre-generated app in the `rails-4-app` folder is the result of running `rails new rails-4-app`
 and then modifying the Gemfile and database.yml to use the PostgreSQL database.
 
 If you wish to rename the application you can simply delete the `/vagrant/rails-4-app` folder, 
 generate a new Rails application from scratch and then modify the database details.
+
+If you have an existing application, before using the `vagrant up` command, replace the 
+`/vagrant/rails-4-app` folder with you application's folder and adjust the variables in the 
+`.env` file accordingly.
 
 
 Compatibility

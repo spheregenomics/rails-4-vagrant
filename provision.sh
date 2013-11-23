@@ -109,12 +109,12 @@ if [[ -z $(ruby -v | grep 2.0.0) ]]; then
   # get Ruby source
   echo "Fetching ruby 2.0.0..."
   {
-    wget http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-    tar xzf ruby-2.0.0-p247.tar.gz
+    wget http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p353.tar.gz
+    tar xzf ruby-2.0.0-p353.tar.gz
   } >> $LOG_FILE 2>&1
 
   # build it
-  cd ruby-2.0.0-p247
+  cd ruby-2.0.0-p353
   echo "Building ruby 2.0.0..."
   {
     ./configure
@@ -129,7 +129,7 @@ if [[ -z $(ruby -v | grep 2.0.0) ]]; then
 
   # cleanup
   cd ..
-  rm -rf ruby-2.0.0-p247*
+  rm -rf ruby-2.0.0-p353*
 fi
 
 

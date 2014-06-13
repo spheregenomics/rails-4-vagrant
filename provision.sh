@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Provisions an Ubuntu server with Rails 4, on Ruby 2.0.0, for a development environment.
+# Provisions an Ubuntu server with Rails 4, on Ruby 2.1.2, for a development environment.
 #
 # Requires:
 #  - sudo privileges
@@ -105,17 +105,17 @@ echo "Installing Node.js as the javascript runtime..."
 #   Install Ruby 2
 # =============================================================================
 
-if [[ -z $(ruby -v | grep 2.0.0) ]]; then
+if [[ -z $(ruby -v | grep 2.1.2) ]]; then
   # get Ruby source
-  echo "Fetching ruby 2.0.0..."
+  echo "Fetching ruby 2.1.2 ..."
   {
-    wget http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p353.tar.gz
-    tar xzf ruby-2.0.0-p353.tar.gz
+    wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
+    tar xzf ruby-2.1.2.tar.gz
   } >> $LOG_FILE 2>&1
 
   # build it
-  cd ruby-2.0.0-p353
-  echo "Building ruby 2.0.0..."
+  cd ruby-2.1.2
+  echo "Building ruby 2.1.2 ..."
   {
     ./configure
     make
@@ -124,12 +124,12 @@ if [[ -z $(ruby -v | grep 2.0.0) ]]; then
   } >> $LOG_FILE 2>&1
 
   # install Rails 4
-  echo "Installing Rails 4..."
-  sudo gem install rails --version 4.0.0 --no-document >> $LOG_FILE 2>&1
+  echo "Installing Rails 4.1.1 ..."
+  sudo gem install rails --version 4.1.1 --no-document >> $LOG_FILE 2>&1
 
   # cleanup
   cd ..
-  rm -rf ruby-2.0.0-p353*
+  rm -rf ruby-2.1.2*
 fi
 
 

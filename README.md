@@ -1,4 +1,4 @@
-Rails 4 on Ruby 2.0.0 for Vagrant
+Rails 4 on Ruby 2.1.2 for Vagrant
 =======================================
 
 This Vagrant setup makes it fast & easy for you to get started making your Rails 4 application.
@@ -31,7 +31,7 @@ Notes
 This setup is based on the [Rails 4, Nginx & Unicorn Installation Script for Ubuntu][3] only it
 doesn't install Nginx and Unicorn. What it actually does is:
 
-* Install Ruby 2.0.0
+* Install Ruby 2.1.2
 * Install Rails 4
 * Install Node.js (for the Javascript runtime)
 * Install PostgreSQL

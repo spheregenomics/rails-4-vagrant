@@ -12,7 +12,7 @@ Usage
     $ cd <app_name>
     $ vagrant up
     $ vagrant ssh
-    $ cd /vagrant/<app_name>
+    $ cd /vagrant/rails-4-app
     $ rails s
 ```
 
@@ -23,7 +23,11 @@ The source code for your application is in the <app_name> folder; you can edit i
 
 ```
 $ cd /vagrant
-$ rm -rf *
+$ rm -rf rails-4-app
+$ sudo -u postgres psql -d postgres
+postgres=# create user vagrant with password 'vagrant';
+postgres=# alter user vagrant with superuser;
+$ dropdb rails_4_db
 $ rails new <app_name> -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
 ```
    
